@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* ==========================================================================
+   CSS Reset
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ==========================================================================
+   CSS Variables
+   ========================================================================== */
+:root {
+  /* Colors */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-alt: #F9F8F7;
+  --color-bg-dark: #0A0A0A;
+  
+  --color-text-primary: #0A0A0A;
+  --color-text-secondary: #363636;
+  --color-text-tertiary: #696765;
+  
+  --color-accent-primary: #4ECDC4;
+  --color-accent-dark: #3BA89E;
+  --color-accent-danger: #CC3333;
+  --color-border: #E5E5E5; /* + 1 color */
+
+  /* Typography */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'DM Sans', sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;   /* 8px */
+  --spacing-sm: 1rem;     /* 16px */
+  --spacing-md: 1.5rem;   /* 24px */
+  --spacing-lg: 2rem;     /* 32px */
+  --spacing-xl: 3rem;     /* 48px */
+  --section-spacing: 100px;
+
+  /* Layout */
+  --container-max-width: 1440px;
+  --container-padding: 80px;
+}
+
+/* Breakpoints (for reference in media queries)
+   sm: 640px
+   md: 768px
+   lg: 1024px
+   xl: 1280px
+*/
+
+/* ==========================================================================
+   Global Typography
+   ========================================================================== */
+html {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+}
+
+h1 {
+  font-size: clamp(3rem, 5vw, 4.5rem); /* 48px to 72px */
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(2rem, 3.5vw, 2.5rem); /* 32px to 40px */
+  font-weight: 600;
+}
+
+h3 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.25rem, 2vw, 1.5rem); /* 20px to 24px */
+  font-weight: 500;
+}
+
+p {
+  margin-bottom: var(--spacing-sm);
+  font-size: 1.125rem; /* 18px body1 */
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.875rem; /* 14px */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em; /* 2-3px */
+  color: var(--color-accent-primary);
+  margin-bottom: var(--spacing-xs);
+  display: block;
+}
+
+.caption {
+  font-family: var(--font-sans);
+  font-size: 0.75rem; /* 12px */
+  font-weight: 300;
+  color: var(--color-text-tertiary);
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.section-spacing {
+  padding-top: var(--section-spacing);
+  padding-bottom: var(--section-spacing);
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-accent {
+  color: var(--color-accent-primary);
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border-radius: 9999px; /* Pill shape */
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  line-height: 1;
+}
+
+.btn-primary {
+  background-color: var(--color-bg-dark);
+  color: var(--color-bg-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-text-secondary);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-bg-alt);
+}
+
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
+:focus-visible {
+  outline: 3px solid var(--color-accent-primary);
+  outline-offset: 3px;
+}
+
+.skip-to-main {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  padding: 1rem;
+  background: var(--color-bg-dark);
+  color: var(--color-bg-primary);
+  z-index: 9999;
+  transition: top 0.3s ease;
+}
+
+.skip-to-main:focus {
+  top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .button:hover {
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   Responsiveness
+   ========================================================================== */
+@media (max-width: 1024px) {
+  :root {
+    --container-padding: 40px;
+    --section-spacing: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 24px;
+    --section-spacing: 60px;
+  }
+  
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 3rem);
+  }
+  
+  h2 {
+    font-size: clamp(1.75rem, 5vw, 2rem);
+  }
+  
+  .button {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --container-padding: 16px;
+    --section-spacing: 40px;
+    --spacing-xl: 2.5rem;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+}

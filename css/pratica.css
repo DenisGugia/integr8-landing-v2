@@ -1,0 +1,126 @@
+/* ============================================================
+   INTEGR8 — pratica.css
+   2 blocos empilhados + placeholder visual de jornada.
+   ============================================================ */
+
+.pratica {
+  background: var(--color-offwhite, #F9F8F7);
+  padding: 100px 80px;
+}
+
+.pratica__inner {
+  max-width: var(--container-max-width, 1440px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* ── CONTEÚDO (esquerda) ── */
+.pratica__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl, 3rem);
+}
+
+.pratica__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md, 1.5rem);
+}
+
+.pratica__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  color: var(--color-black, #0A0A0A);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* ── BLOCOS ── */
+.pratica__blocos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg, 2rem);
+}
+
+.pratica__bloco {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm, 1rem);
+  padding: var(--spacing-lg, 2rem);
+  background: var(--color-white, #FFFFFF);
+  border-radius: 12px;
+  border-left: 3px solid var(--color-accent-teal, #4ECDC4);
+}
+
+.pratica__bloco-title {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-black, #0A0A0A);
+}
+
+.pratica__bloco-text {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--color-gray-dark, #363636);
+  line-height: 1.65;
+}
+
+/* ── VISUAL (direita) ── */
+.pratica__visual {
+  position: sticky;
+  top: 100px;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--color-white, #FFFFFF);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm, 1rem);
+  color: var(--color-gray-medium, #696765);
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 13px;
+  text-align: center;
+  padding: var(--spacing-lg, 2rem);
+}
+
+.pratica__visual span:first-child {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent-teal, #4ECDC4);
+}
+
+/* ── RESPONSIVIDADE ── */
+@media (max-width: 1024px) {
+  .pratica { padding: 80px 40px; }
+  .pratica__inner { gap: 48px; }
+}
+
+@media (max-width: 768px) {
+  .pratica {
+    padding: 64px var(--spacing-md, 1.5rem);
+  }
+  .pratica__inner {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl, 3rem);
+  }
+  .pratica__visual {
+    position: static;
+    aspect-ratio: 16 / 9;
+    order: -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .pratica { padding: 48px var(--spacing-sm, 1rem); }
+  .pratica__bloco { padding: var(--spacing-md, 1.5rem); }
+}

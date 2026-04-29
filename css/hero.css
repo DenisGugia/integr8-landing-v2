@@ -1,0 +1,275 @@
+/* ============================================================
+   INTEGR8 — hero.css
+   Hero fullscreen, texto à esquerda, imagem à direita.
+   Composição: modelos desfocados ao fundo + app em primeiro plano.
+   ============================================================ */
+
+/* ── BASE ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--spacing-xl, 3rem);
+  padding: 120px 80px 80px;
+  overflow: hidden;
+  background: var(--color-black, #0A0A0A);
+}
+
+/* ── BACKGROUND IMAGE (placeholder) ── */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #1a1a1a;
+
+  /* Quando imagem real for inserida:
+  background-image: url('../assets/images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px) brightness(0.45);
+  */
+}
+
+/* Overlay escuro sobre o fundo */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 10, 0.88) 0%,
+    rgba(10, 10, 10, 0.60) 50%,
+    rgba(10, 10, 10, 0.45) 100%
+  );
+}
+
+/* Fade para a próxima seção */
+.hero__fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  z-index: 2;
+  background: linear-gradient(to top, var(--color-white, #FFFFFF) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* ── CONTEÚDO TEXTO (coluna esquerda) ── */
+.hero__content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md, 1.5rem);
+  animation: heroFadeIn 0.8s ease forwards;
+}
+
+/* ── EYEBROW ── */
+.hero__eyebrow {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent-teal, #4ECDC4);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero__eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--color-accent-teal, #4ECDC4);
+}
+
+/* ── HEADLINE ── */
+.hero__headline {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-white, #FFFFFF);
+  letter-spacing: -0.02em;
+  max-width: 580px;
+}
+
+/* ── SUBHEADLINE ── */
+.hero__subheadline {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: clamp(15px, 1.8vw, 18px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 480px;
+}
+
+/* ── CTA ── */
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-black, #0A0A0A);
+  background: var(--color-white, #FFFFFF);
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  margin-top: var(--spacing-sm, 1rem);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero__cta:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+}
+
+.hero__cta::after {
+  content: '↗';
+  font-size: 14px;
+}
+
+/* ── IMAGEM / MOCKUP (coluna direita) ── */
+.hero__visual {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: heroSlideIn 0.9s ease 0.15s both;
+}
+
+/* Placeholder para a composição app + smartwatch + modelos */
+.hero__image-placeholder {
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 4 / 5;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm, 1rem);
+  color: rgba(255, 255, 255, 0.35);
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 13px;
+  text-align: center;
+  padding: var(--spacing-lg, 2rem);
+}
+
+.hero__image-placeholder p:first-child {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent-teal, #4ECDC4);
+  opacity: 0.7;
+}
+
+/* ── ANIMAÇÕES ── */
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Respeitar preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .hero__content,
+  .hero__visual {
+    animation: none;
+  }
+}
+
+/* ── RESPONSIVIDADE ── */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 100px 40px 80px;
+    gap: var(--spacing-lg, 2rem);
+  }
+
+  .hero__headline {
+    font-size: clamp(32px, 4.5vw, 52px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 100px var(--spacing-md, 1.5rem) 60px;
+    text-align: center;
+    min-height: 100svh;
+  }
+
+  .hero__content {
+    align-items: center;
+  }
+
+  .hero__eyebrow {
+    justify-content: center;
+  }
+
+  .hero__headline {
+    font-size: clamp(30px, 8vw, 44px);
+    max-width: 100%;
+  }
+
+  .hero__subheadline {
+    max-width: 100%;
+    font-size: 16px;
+  }
+
+  .hero__visual {
+    order: -1;
+    margin-top: var(--spacing-sm, 1rem);
+  }
+
+  .hero__image-placeholder {
+    max-width: 320px;
+    aspect-ratio: 3 / 4;
+    margin: 0 auto;
+  }
+
+  .hero__fade {
+    height: 80px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 88px var(--spacing-sm, 1rem) 48px;
+  }
+
+  .hero__cta {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 24px;
+  }
+}

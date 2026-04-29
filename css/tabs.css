@@ -1,0 +1,191 @@
+/* ============================================================
+   INTEGR8 — tabs.css
+   3 tabs interativas: Treino, Nutrição, Monitoramento.
+   Tab ativa opaca, inativas com opacity reduzida.
+   Referência: Eight Sleep Temperature/Elevation/Sound tabs.
+   ============================================================ */
+
+.tabs {
+  background: var(--color-white, #FFFFFF);
+  padding: 100px 80px;
+}
+
+.tabs__inner {
+  max-width: var(--container-max-width, 1440px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl, 3rem);
+}
+
+/* ── HEADER ── */
+.tabs__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md, 1.5rem);
+  max-width: 560px;
+}
+
+.tabs__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  color: var(--color-black, #0A0A0A);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* ── TAB BUTTONS ── */
+.tabs__nav {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tabs__btn {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-gray-medium, #696765);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: var(--spacing-sm, 1rem) var(--spacing-lg, 2rem);
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  margin-bottom: -1px;
+  white-space: nowrap;
+}
+
+.tabs__btn:hover {
+  opacity: 0.75;
+  color: var(--color-black, #0A0A0A);
+}
+
+.tabs__btn[aria-selected="true"],
+.tabs__btn.active {
+  color: var(--color-black, #0A0A0A);
+  opacity: 1;
+  font-weight: 600;
+  border-bottom-color: var(--color-black, #0A0A0A);
+}
+
+/* ── TAB PANELS ── */
+.tabs__panels {
+  position: relative;
+}
+
+.tabs__panel {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl, 3rem);
+  align-items: center;
+  animation: tabFadeIn 0.35s ease forwards;
+}
+
+.tabs__panel[aria-hidden="false"],
+.tabs__panel.active {
+  display: grid;
+}
+
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── PANEL CONTENT (esquerda) ── */
+.tabs__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md, 1.5rem);
+}
+
+.tabs__subtitle {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 700;
+  color: var(--color-black, #0A0A0A);
+  line-height: 1.25;
+}
+
+.tabs__text {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-gray-dark, #363636);
+  line-height: 1.7;
+}
+
+.tabs__text p + p {
+  margin-top: var(--spacing-sm, 1rem);
+}
+
+/* ── PANEL IMAGE (direita) ── */
+.tabs__image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--color-offwhite, #F9F8F7);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm, 1rem);
+  color: var(--color-gray-medium, #696765);
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 13px;
+  text-align: center;
+  padding: var(--spacing-lg, 2rem);
+  transition: opacity 0.35s ease;
+}
+
+.tabs__image span:first-child {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent-teal, #4ECDC4);
+}
+
+/* ── ACESSIBILIDADE ── */
+.tabs__btn:focus-visible {
+  outline: 2px solid var(--color-accent-teal, #4ECDC4);
+  outline-offset: 2px;
+}
+
+/* ── RESPONSIVIDADE ── */
+@media (max-width: 1024px) {
+  .tabs { padding: 80px 40px; }
+}
+
+@media (max-width: 768px) {
+  .tabs { padding: 64px var(--spacing-md, 1.5rem); }
+
+  .tabs__nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .tabs__nav::-webkit-scrollbar { display: none; }
+
+  .tabs__btn {
+    padding: var(--spacing-sm, 1rem) var(--spacing-md, 1.5rem);
+    font-size: 14px;
+  }
+
+  .tabs__panel[aria-hidden="false"],
+  .tabs__panel.active {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs__image {
+    aspect-ratio: 16 / 9;
+    order: -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .tabs { padding: 48px var(--spacing-sm, 1rem); }
+  .tabs__btn { padding: var(--spacing-sm, 1rem); }
+}

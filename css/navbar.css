@@ -1,0 +1,221 @@
+/* ============================================================
+   INTEGR8 — navbar.css
+   Navbar fixa, transparente sobre hero, opaca ao rolar.
+   Referência: Eight Sleep navbar behavior.
+   ============================================================ */
+
+/* ── BASE ── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 0 80px;
+  background: transparent;
+  transition: background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+/* Estado ao rolar — fundo sólido + sombra sutil */
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* ── INNER LAYOUT ── */
+.navbar__inner {
+  width: 100%;
+  max-width: var(--container-max-width, 1440px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg, 2rem);
+}
+
+/* ── LOGO ── */
+.navbar__logo {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-black, #0A0A0A);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+.navbar__logo:hover {
+  opacity: 0.75;
+}
+
+/* Logo branco sobre hero (antes do scroll) */
+.navbar:not(.scrolled) .navbar__logo {
+  color: var(--color-white, #FFFFFF);
+}
+
+/* ── LINKS ── */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg, 2rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__links a {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-dark, #363636);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
+}
+
+.navbar__links a:hover {
+  color: var(--color-accent-teal, #4ECDC4);
+}
+
+/* Links brancos sobre hero (antes do scroll) */
+.navbar:not(.scrolled) .navbar__links a {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.navbar:not(.scrolled) .navbar__links a:hover {
+  color: var(--color-white, #FFFFFF);
+}
+
+/* ── CTA ── */
+.navbar__cta {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-white, #FFFFFF);
+  background: var(--color-black, #0A0A0A);
+  text-decoration: none;
+  padding: 10px 24px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.navbar__cta:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* CTA com borda branca sobre hero (antes do scroll) */
+.navbar:not(.scrolled) .navbar__cta {
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  color: var(--color-white, #FFFFFF);
+}
+
+.navbar:not(.scrolled) .navbar__cta:hover {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+}
+
+/* ── HAMBURGER (mobile) ── */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-black, #0A0A0A);
+  border-radius: 2px;
+  transition: background 0.2s ease;
+}
+
+.navbar:not(.scrolled) .navbar__hamburger span {
+  background: var(--color-white, #FFFFFF);
+}
+
+/* ── MOBILE MENU ── */
+.navbar__mobile-menu {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  background: var(--color-white, #FFFFFF);
+  padding: var(--spacing-lg, 2rem) var(--spacing-md, 1.5rem);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  gap: var(--spacing-md, 1.5rem);
+  z-index: 999;
+}
+
+.navbar__mobile-menu.open {
+  display: flex;
+}
+
+.navbar__mobile-menu a {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-gray-dark, #363636);
+  text-decoration: none;
+  padding: var(--spacing-sm, 1rem) 0;
+  border-bottom: 1px solid var(--color-offwhite, #F9F8F7);
+}
+
+.navbar__mobile-menu .navbar__cta {
+  width: 100%;
+  text-align: center;
+  margin-top: var(--spacing-sm, 1rem);
+  background: var(--color-black, #0A0A0A);
+  border: none;
+  color: var(--color-white, #FFFFFF);
+}
+
+/* ── RESPONSIVIDADE ── */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 var(--spacing-md, 1.5rem);
+    height: 64px;
+  }
+
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding: 0 var(--spacing-sm, 1rem);
+  }
+}

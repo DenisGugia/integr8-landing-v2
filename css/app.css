@@ -1,0 +1,153 @@
+/* ============================================================
+   INTEGR8 — app.css
+   5 cards em scroll horizontal. Centro de comando do app.
+   ============================================================ */
+
+.app {
+  background: var(--color-offwhite, #F9F8F7);
+  padding: 100px 80px;
+  overflow: hidden;
+}
+
+.app__inner {
+  max-width: var(--container-max-width, 1440px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl, 3rem);
+}
+
+/* ── HEADER ── */
+.app__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md, 1.5rem);
+  max-width: 600px;
+}
+
+.app__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  color: var(--color-black, #0A0A0A);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.app__body {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 16px;
+  color: var(--color-gray-dark, #363636);
+  line-height: 1.65;
+  max-width: 520px;
+}
+
+/* ── SCROLL CONTAINER ── */
+.app__scroll {
+  display: flex;
+  gap: var(--spacing-lg, 2rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: var(--spacing-sm, 1rem);
+  margin: 0 -80px;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.app__scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── CARD ── */
+.app__card {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md, 1.5rem);
+  background: var(--color-white, #FFFFFF);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.app__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Placeholder imagem do app */
+.app__card-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--color-offwhite, #F9F8F7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm, 1rem);
+  color: var(--color-gray-medium, #696765);
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 12px;
+  text-align: center;
+  padding: var(--spacing-md, 1.5rem);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.app__card-image span:first-child {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent-teal, #4ECDC4);
+}
+
+/* Conteúdo do card */
+.app__card-content {
+  padding: var(--spacing-md, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs, 0.5rem);
+}
+
+.app__card-title {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-black, #0A0A0A);
+}
+
+.app__card-desc {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-gray-medium, #696765);
+  line-height: 1.55;
+}
+
+/* ── RESPONSIVIDADE ── */
+@media (max-width: 1024px) {
+  .app { padding: 80px 40px; }
+  .app__scroll { margin: 0 -40px; padding-left: 40px; padding-right: 40px; }
+}
+
+@media (max-width: 768px) {
+  .app { padding: 64px var(--spacing-md, 1.5rem); }
+  .app__scroll {
+    margin: 0 calc(-1 * var(--spacing-md, 1.5rem));
+    padding-left: var(--spacing-md, 1.5rem);
+    padding-right: var(--spacing-md, 1.5rem);
+  }
+  .app__card { flex: 0 0 260px; }
+}
+
+@media (max-width: 640px) {
+  .app { padding: 48px var(--spacing-sm, 1rem); }
+  .app__scroll {
+    margin: 0 calc(-1 * var(--spacing-sm, 1rem));
+    padding-left: var(--spacing-sm, 1rem);
+    padding-right: var(--spacing-sm, 1rem);
+  }
+  .app__card { flex: 0 0 240px; }
+}

@@ -1,0 +1,193 @@
+/* ============================================================
+   INTEGR8 — ciencia.css
+   Seção escura com visual do dia de 24h.
+   Fundo preto, tipografia serif grande, contraste alto.
+   ============================================================ */
+
+.ciencia {
+  background: var(--color-black, #0A0A0A);
+  padding: 100px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Detalhe decorativo de fundo */
+.ciencia::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(78, 205, 196, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ciencia__inner {
+  max-width: var(--container-max-width, 1440px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* ── CONTEÚDO (esquerda) ── */
+.ciencia__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg, 2rem);
+}
+
+.ciencia__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 700;
+  color: var(--color-white, #FFFFFF);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.ciencia__title em {
+  font-style: italic;
+  color: var(--color-accent-teal, #4ECDC4);
+}
+
+.ciencia__body {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: clamp(15px, 1.8vw, 17px);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+}
+
+.ciencia__body p + p {
+  margin-top: var(--spacing-sm, 1rem);
+}
+
+/* ── VISUAL 24H (direita) ── */
+.ciencia__visual {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg, 2rem);
+}
+
+/* Placeholder para o visual de 24h */
+.ciencia__chart-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm, 1rem);
+  padding: var(--spacing-lg, 2rem);
+  text-align: center;
+}
+
+.ciencia__chart-placeholder span:first-child {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent-teal, #4ECDC4);
+  opacity: 0.7;
+}
+
+.ciencia__chart-placeholder p {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.5;
+  max-width: 280px;
+}
+
+/* Barra visual de 24h (representação simplificada) */
+.ciencia__bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.ciencia__bar-treino {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6%;
+  background: var(--color-accent-red, #CC3333);
+  border-radius: 4px;
+}
+
+.ciencia__bar-resto {
+  position: absolute;
+  left: 6%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: var(--color-accent-teal, #4ECDC4);
+  border-radius: 0 4px 4px 0;
+  opacity: 0.6;
+}
+
+.ciencia__bar-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--spacing-xs, 0.5rem);
+}
+
+.ciencia__bar-labels span {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.05em;
+}
+
+.ciencia__bar-labels span:first-child {
+  color: var(--color-accent-red, #CC3333);
+  opacity: 0.8;
+}
+
+.ciencia__bar-labels span:last-child {
+  color: var(--color-accent-teal, #4ECDC4);
+  opacity: 0.8;
+}
+
+/* ── RESPONSIVIDADE ── */
+@media (max-width: 1024px) {
+  .ciencia {
+    padding: 80px 40px;
+  }
+
+  .ciencia__inner {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ciencia {
+    padding: 64px var(--spacing-md, 1.5rem);
+  }
+
+  .ciencia__inner {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl, 3rem);
+  }
+
+  .ciencia__visual {
+    order: -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .ciencia {
+    padding: 48px var(--spacing-sm, 1rem);
+  }
+}

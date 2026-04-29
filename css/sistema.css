@@ -1,0 +1,90 @@
+/* ============================================================
+   INTEGR8 — sistema.css
+   8 pilares em círculo. Eyebrow + título + SVG placeholder.
+   ============================================================ */
+
+.sistema {
+  background: var(--color-offwhite, #F9F8F7);
+  padding: 100px 80px;
+}
+
+.sistema__inner {
+  max-width: var(--container-max-width, 1440px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xl, 3rem);
+  text-align: center;
+}
+
+.sistema__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md, 1.5rem);
+  max-width: 600px;
+}
+
+.sistema__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  color: var(--color-black, #0A0A0A);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.sistema__body {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: clamp(15px, 1.8vw, 17px);
+  color: var(--color-gray-dark, #363636);
+  line-height: 1.65;
+}
+
+/* Placeholder para SVG dos 8 pilares */
+.sistema__visual {
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1;
+  background: var(--color-white, #FFFFFF);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm, 1rem);
+  color: var(--color-gray-medium, #696765);
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 13px;
+  text-align: center;
+  padding: var(--spacing-xl, 3rem);
+}
+
+.sistema__visual span:first-child {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent-teal, #4ECDC4);
+}
+
+.sistema__caption {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 14px;
+  color: var(--color-gray-medium, #696765);
+  font-style: italic;
+}
+
+/* ── RESPONSIVIDADE ── */
+@media (max-width: 1024px) {
+  .sistema { padding: 80px 40px; }
+}
+
+@media (max-width: 768px) {
+  .sistema { padding: 64px var(--spacing-md, 1.5rem); }
+  .sistema__visual { max-width: 320px; }
+}
+
+@media (max-width: 640px) {
+  .sistema { padding: 48px var(--spacing-sm, 1rem); }
+}

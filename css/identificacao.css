@@ -1,0 +1,63 @@
+/* ============================================================
+   INTEGR8 — identificacao.css
+   Seção de identificação de dor. Texto centrado, limpo.
+   ============================================================ */
+
+.identificacao {
+  background: var(--color-offwhite, #F9F8F7);
+  padding: 100px 80px;
+}
+
+.identificacao__inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md, 1.5rem);
+}
+
+.identificacao__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  color: var(--color-black, #0A0A0A);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.identificacao__body {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: clamp(15px, 1.8vw, 18px);
+  font-weight: 400;
+  color: var(--color-gray-dark, #363636);
+  line-height: 1.7;
+}
+
+.identificacao__body strong {
+  color: var(--color-black, #0A0A0A);
+  font-weight: 600;
+}
+
+/* ── RESPONSIVIDADE ── */
+@media (max-width: 1024px) {
+  .identificacao {
+    padding: 80px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .identificacao {
+    padding: 64px var(--spacing-md, 1.5rem);
+  }
+
+  .identificacao__inner {
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .identificacao {
+    padding: 48px var(--spacing-sm, 1rem);
+  }
+}

@@ -1,0 +1,153 @@
+/* ============================================================
+   INTEGR8 — paradigma.css
+   2 cards lado a lado: Força de vontade vs Sistema.
+   Card esquerdo neutro/apagado, card direito destacado.
+   ============================================================ */
+
+.paradigma {
+  background: var(--color-white, #FFFFFF);
+  padding: 100px 80px;
+}
+
+.paradigma__inner {
+  max-width: var(--container-max-width, 1440px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl, 3rem);
+}
+
+/* ── TÍTULO ── */
+.paradigma__title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  color: var(--color-black, #0A0A0A);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 560px;
+}
+
+/* ── GRID ── */
+.paradigma__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg, 2rem);
+  align-items: stretch;
+}
+
+/* ── CARD BASE ── */
+.paradigma__card {
+  padding: var(--spacing-xl, 3rem);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md, 1.5rem);
+}
+
+/* Card esquerdo — apagado, neutro */
+.paradigma__card--weak {
+  background: var(--color-offwhite, #F9F8F7);
+  opacity: 0.65;
+}
+
+/* Card direito — destacado, teal accent */
+.paradigma__card--strong {
+  background: var(--color-offwhite, #F9F8F7);
+  border: 1.5px solid var(--color-accent-teal, #4ECDC4);
+  opacity: 1;
+}
+
+/* ── CARD LABEL ── */
+.paradigma__card-label {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gray-medium, #696765);
+}
+
+.paradigma__card--strong .paradigma__card-label {
+  color: var(--color-accent-teal, #4ECDC4);
+}
+
+/* ── CARD TÍTULO ── */
+.paradigma__card-title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 700;
+  color: var(--color-black, #0A0A0A);
+  line-height: 1.25;
+}
+
+/* ── LISTA DE BULLETS ── */
+.paradigma__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm, 1rem);
+}
+
+.paradigma__list li {
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--color-gray-dark, #363636);
+  line-height: 1.55;
+  padding-left: var(--spacing-md, 1.5rem);
+  position: relative;
+}
+
+.paradigma__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gray-medium, #696765);
+}
+
+.paradigma__card--strong .paradigma__list li::before {
+  background: var(--color-accent-teal, #4ECDC4);
+}
+
+/* ── RESPONSIVIDADE ── */
+@media (max-width: 1024px) {
+  .paradigma {
+    padding: 80px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .paradigma {
+    padding: 64px var(--spacing-md, 1.5rem);
+  }
+
+  .paradigma__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .paradigma__card--weak {
+    opacity: 1;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .paradigma__card {
+    padding: var(--spacing-lg, 2rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .paradigma {
+    padding: 48px var(--spacing-sm, 1rem);
+  }
+
+  .paradigma__card {
+    padding: var(--spacing-md, 1.5rem);
+  }
+}
